@@ -1,0 +1,83 @@
+<Project Sdk="Microsoft.NET.Sdk.Web" ToolsVersion="15.0">
+
+  <PropertyGroup>
+    <TargetFramework>dnx46</TargetFramework>
+    <RuntimeIdentifiers>win7-x64;win7-x86;osx.10.10-x64;osx.10.11-x64;ubuntu.14.04-x64;ubuntu.16.04-x64;centos.7-x64;rhel.7.2-x64;debian.8-x64;fedora.23-x64;opensuse.13.2-x64</RuntimeIdentifiers>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>Microsoft.Bot.Sample.GraphBot</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <UserSecretsId>Microsoft.Bot.Sample.GraphBot</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\**\*;Views;appsettings.json;web.config">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <ProjectReference Include="..\..\..\Library\Microsoft.Bot.Builder.csproj" />
+    <ProjectReference Include="..\..\..\Library\Microsoft.Bot.Connector\Microsoft.Bot.Connector.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Graph">
+      <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Autofac">
+      <Version>3.5.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+      <Version>3.10.305231913</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Session">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Hosting">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables">
+      <Version>1.0.0-rc2-final</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'dnx46' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools">
+      <Version>1.0.0-msbuild1-final</Version>
+    </DotNetCliToolReference>
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+  </PropertyGroup>
+
+</Project>
